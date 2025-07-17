@@ -1,6 +1,7 @@
 # zerogpt_site_streamlit
+[ZeroGPT Site](https://zerogpt.streamlit.app/)
 
-[ZeroGPT Site](https://zerogpt.streamlit.app/chat)
+[ZeroGPT Chat](https://zerogpt.streamlit.app/chat)
 
 Here we are testing the capabilities of the zerogpt library in Python. All services are provided for free, but not always with perfect quality — that’s why we’re testing them.
 
