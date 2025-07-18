@@ -1,1 +1,1 @@
-zerogpt
+zerogpt==1.2.2
