@@ -108,3 +108,9 @@ st.write('Here we are testing the capabilities of the zerogpt library in Python.
 st.write('In this version of the site, you can only chat with an LLM model.')
 st.write('For now, image generation and image prompts are excluded from the site.')
 st.write('In the near future, the site will be developed and more new functions will be added for better use and testing.')
+
+st.header('Change log')
+st.write('21.07.2025')
+st.write('1. added using local storage for chat history')
+st.write('2. added auto save chat history')
+st.write('3. added delete chat history button')
