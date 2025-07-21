@@ -14,6 +14,6 @@ In the near future, the site will be developed and more new functions will be ad
 # Change log
 21.07.2025
 
-added using local storage for chat history
-added auto save chat history
-added delete chat history button
+1. added using local storage for chat history
+2. added auto save chat history
+3. added delete chat history button
