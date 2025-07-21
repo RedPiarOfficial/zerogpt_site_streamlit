@@ -1,16 +1,19 @@
 import streamlit as st
 import zerogpt
 from utils import get_sidebar_default
+import streamlit.components.v1 as components
+from streamlit_local_storage import LocalStorage
 
 AiClient = zerogpt.Client()
 get_sidebar_default()
 chat_id = st.query_params.get("character")
+localStorage = LocalStorage()
 
-if not chat_id:
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-else:
-    st.session_state.character_history = [{}]
+
+# Инициализируем историю сообщений
+if "messages" not in st.session_state:
+    with st.spinner("Загрузка истории чата..."):
+        st.session_state.messages = localStorage.getItem('chat_history') or []
 
 st.sidebar.title(f"Chat Options")
 with st.sidebar:
@@ -21,6 +24,17 @@ with st.sidebar:
         if st.button("Set System Message", type="secondary"):
             messages = [msg for msg in st.session_state.messages if msg.get("role") != "system"]
             st.session_state.messages.insert(0, {'role': 'system', 'content': system_message})
+
+    if st.button("Delete chat history"):
+        components.html("""
+    <script>
+        localStorage.removeItem("chat_history");
+        location.reload();
+    </script>
+    """, height=0)
+        st.session_state.messages = []
+        st.rerun()
+
 
 def wrapped_gen(prompt):
     response = ""
@@ -48,7 +62,7 @@ for message in st.session_state.messages:
         continue
     with st.chat_message(message["role"]):
         if message["role"] == "assistant":
-            if message["pure_think"]:
+            if message.get("pure_think"):
                 with st.expander("🧠 Показать размышления"):
                     st.markdown(message["pure_think"], unsafe_allow_html=True)
                 st.write(message["content"])
@@ -67,3 +81,5 @@ if prompt:
 
     with st.chat_message("assistant"):
         st.write_stream(wrapped_gen(prompt))
+
+    localStorage.setItem('chat_history', st.session_state.messages)
