@@ -1,1 +1,2 @@
 zerogpt==1.2.2
+streamlit_local_storage
