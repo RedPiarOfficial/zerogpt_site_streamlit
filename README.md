@@ -12,7 +12,14 @@ For now, image generation and image prompts are excluded from the site.
 In the near future, the site will be developed and more new functions will be added for better use and testing.
 
 # Change log
-21.07.2025
+
+## 26.07.2025
+1. Improved optimization for LLMs
+2. Enhanced chat visuals
+3. Added support for attaching files (.txt, .docx)
+4. LLM settings are saved automatically
+
+## 21.07.2025
 
 1. added using local storage for chat history
 2. added auto save chat history
